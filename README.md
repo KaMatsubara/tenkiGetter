@@ -7,6 +7,9 @@
 
 ## Usage
 hoge
+```
+tenkiGetter [オプション] <場所>
+```
 
 ## Installation
 hoge
