@@ -9,6 +9,12 @@
 hoge
 ```
 tenkiGetter [オプション] <場所>
+
+オプション
+-h --help ヘルプを表示
+-v --version　バージョンを表示
+-d --day　短期天気概況の取得
+-w --week　週間天気概要の取得
 ```
 
 ## Installation
