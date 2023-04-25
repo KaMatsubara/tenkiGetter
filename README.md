@@ -2,7 +2,7 @@
 
 天気情報を取得します
 
-![](https://img.shields.io/coverallsCoverage/github/KaMatsubara/tenkiGetter)
+[![Coverage Status](https://coveralls.io/repos/github/KaMatsubara/tenkiGetter/badge.svg?branch=main)](https://coveralls.io/github/KaMatsubara/tenkiGetter?branch=main)
 ## Description
 気象庁から提供されているAPIを利用してCLIから天気情報を取得するアプリケーションです
 
