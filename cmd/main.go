@@ -4,7 +4,7 @@ import (
        "os"
 )
 func goMain(args []string) int {
-     fmt.Println("Hello World")
+     fmt.Println("Hello World!")
      return 0
 }
 func main() {
