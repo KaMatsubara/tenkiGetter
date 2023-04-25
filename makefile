@@ -1,8 +1,5 @@
 PACKAGE_LIST := $(shell go list ./...)
 
-VERSION := 0.0.1
-NAME := tenkiGetter
-DIST := $(NAME)-$(VERSION)
 
 tenkiGetter:
 	go build -o tenkiGetter $(PACKAGE_LIST)
