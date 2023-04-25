@@ -3,6 +3,7 @@
 天気情報を取得します
 
 [![Coverage Status](https://coveralls.io/repos/github/KaMatsubara/tenkiGetter/badge.svg?branch=main)](https://coveralls.io/github/KaMatsubara/tenkiGetter?branch=main)
+[![codebeat badge](https://codebeat.co/badges/4e8d995f-16b5-4bc8-b135-641143c9a467)](https://codebeat.co/projects/github-com-kamatsubara-tenkigetter-main)
 ## Description
 気象庁から提供されているAPIを利用してCLIから天気情報を取得するアプリケーションです
 
