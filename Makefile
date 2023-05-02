@@ -4,7 +4,7 @@ NAME := tenkiGetter
 DIST := $(NAME)-$(VERSION)
 
 
-tenkiGetter:
+tenkiGetter:coverage.out
 	go build -o tenkiGetter $(PACKAGE_LIST)
 
 coverage.out:
