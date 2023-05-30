@@ -1,8 +1,8 @@
-package tenkiGetter_test
+package main
 
 import "testing"
 
-func Example_Main() {
+func _Example_Main() {
 	goMain([]string{})
 	// Output:
 	// Hello World

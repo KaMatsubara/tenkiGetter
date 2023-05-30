@@ -1,4 +1,4 @@
-package tenkiGetter
+package main
 
 import (
 	"fmt"
