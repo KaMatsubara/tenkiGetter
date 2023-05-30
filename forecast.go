@@ -15,7 +15,7 @@ type Forecast struct {
 }
 
 func (forecast *Forecast) getForecast(config *Config) (*Forecast, error) {
-	request, err := http.NewRequest("GET", forecast.buildUrl("groups"), nil)
+	request, err := http.NewRequest("GET", forecast.buildUrl(config), nil)
 	if err != nil {
 		return nil, err
 	}
@@ -39,8 +39,8 @@ func parseForecast(data []byte) (*Forecast, error) {
 	return &returnValue, nil
 }
 
-func (forecast *Forecast) buildUrl(endpoint string) string {
-	return fmt.Sprintf("%s/%s.json", forecast.url, endpoint)
+func (forecast *Forecast) buildUrl(config *Config) string {
+	return fmt.Sprintf("https://www.jma.go.jp/bosai/forecast/data/%s/%s.json", config.RunMode.GetMode(), config.OfficeCode)
 }
 
 func sendRequest(request *http.Request, config *Config) ([]byte, error) {

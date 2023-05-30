@@ -1,7 +1,8 @@
 package tenkiGetter
 
 type Config struct {
-	RunMode Mode
+	RunMode    Mode
+	OfficeCode string
 }
 
 type Mode int
@@ -21,6 +22,17 @@ func (m Mode) String() string {
 		return "day"
 	case week:
 		return "week"
+	default:
+		return "unknown"
+	}
+}
+
+func (m Mode) GetMode() string {
+	switch m {
+	case day:
+		return "overview_forecast"
+	case week:
+		return "overview_week"
 	default:
 		return "unknown"
 	}
