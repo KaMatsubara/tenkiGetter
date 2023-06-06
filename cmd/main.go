@@ -108,9 +108,8 @@ func perform(opts *options, args []string) *tenkiGetterError {
 }
 
 func parseOptions(args []string) (*options, []string, *tenkiGetterError) {
-	fmt.Println(args[1:])
 	opts, flags := buildOptions(args)
-	flags.Parse(args)
+	flags.Parse(args[1:])
 	if opts.flagSet.helpFlag {
 		fmt.Println(helpMessage(args))
 		return nil, nil, &tenkiGetterError{statusCode: 0, message: ""}
@@ -127,7 +126,6 @@ func getTenki(forecast *tenkiGetter.Forecast, config *tenkiGetter.Config, url st
 	if err != nil {
 		return err
 	}
-	fmt.Println(result.GetData(url))
 	fmt.Println(result.GetData("text"))
 	return nil
 }
