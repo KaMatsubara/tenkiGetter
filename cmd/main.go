@@ -5,6 +5,7 @@ import (
 	"os"
 	"path/filepath"
 
+	"github.com/KaMatsubara/tenkiGetter"
 	flag "github.com/spf13/pflag"
 )
 
@@ -40,44 +41,111 @@ func (e tenkiGetterError) Error() string {
 	return e.message
 }
 
+type flags struct {
+	dayFlag     bool
+	weekFlag    bool
+	helpFlag    bool
+	versionFlag bool
+}
+
+type runOpts struct {
+	config string
+}
+
 type options struct {
-	day     bool
-	week    bool
-	help    bool
-	version bool
+	runOpt  *runOpts
+	flagSet *flags
+}
+
+func newOptions() *options {
+	return &options{runOpt: &runOpts{}, flagSet: &flags{}}
+}
+
+func (opts *options) mode(args []string) tenkiGetter.Mode {
+	switch {
+	case opts.flagSet.dayFlag:
+		return tenkiGetter.Day
+	default:
+		return tenkiGetter.Week
+	}
 }
 
 func buildOptions(args []string) (*options, *flag.FlagSet) {
-	opts := &options{}
+	opts := newOptions()
 	flags := flag.NewFlagSet(args[0], flag.ContinueOnError)
 	flags.Usage = func() { fmt.Println(helpMessage(args)) }
-	flags.BoolVarP(&opts.day, "day", "d", false, "短期天気概況の取得")
-	flags.BoolVarP(&opts.week, "week", "w", false, "週間天気概況の取得")
-	flags.BoolVarP(&opts.help, "help", "h", false, "ヘルプを表示")
-	flags.BoolVarP(&opts.version, "version", "v", false, "バージョンを表示")
+	flags.BoolVarP(&opts.flagSet.dayFlag, "day", "d", false, "短期天気概況の取得")
+	flags.BoolVarP(&opts.flagSet.weekFlag, "week", "w", false, "週間天気概況の取得")
+	flags.BoolVarP(&opts.flagSet.helpFlag, "help", "h", false, "ヘルプを表示")
+	flags.BoolVarP(&opts.flagSet.versionFlag, "version", "v", false, "バージョンを表示")
 	return opts, flags
 }
 
+func performImpl(args []string, executor func(url string) error) *tenkiGetterError {
+	for _, url := range args {
+		err := executor(url)
+		if err != nil {
+			return makeError(err, 3)
+		}
+	}
+	return nil
+}
+
 func perform(opts *options, args []string) *tenkiGetterError {
-	fmt.Println("Hello World")
+	forecast := tenkiGetter.NewForecast()
+	config := tenkiGetter.NewConfig(opts.mode(args))
+	switch config.RunMode {
+	case tenkiGetter.Day:
+		return performImpl(args, func(url string) error {
+			return getTenki(forecast, config, url)
+		})
+	case tenkiGetter.Week:
+		return performImpl(args, func(url string) error {
+			return getTenki(forecast, config, url)
+		})
+	}
 	return nil
 }
 
 func parseOptions(args []string) (*options, []string, *tenkiGetterError) {
+	fmt.Println(args[1:])
 	opts, flags := buildOptions(args)
-	flags.Parse(args[1:])
-	if opts.help {
+	flags.Parse(args)
+	if opts.flagSet.helpFlag {
 		fmt.Println(helpMessage(args))
 		return nil, nil, &tenkiGetterError{statusCode: 0, message: ""}
 	}
-	if opts.version {
+	if opts.flagSet.versionFlag {
 		fmt.Println(versionString(args))
 		return nil, nil, &tenkiGetterError{statusCode: 0, message: ""}
 	}
-	return opts, flag.Args(), nil
+	return opts, flags.Args(), nil
 }
+
+func getTenki(forecast *tenkiGetter.Forecast, config *tenkiGetter.Config, url string) error {
+	result, err := forecast.GetForecast(config)
+	if err != nil {
+		return err
+	}
+	fmt.Println(result.GetData(url))
+	fmt.Println(result.GetData("text"))
+	return nil
+}
+
+func makeError(err error, status int) *tenkiGetterError {
+	if err == nil {
+		return nil
+	}
+	ue, ok := err.(*tenkiGetterError)
+	if ok {
+		return ue
+	}
+	return &tenkiGetterError{statusCode: status, message: err.Error()}
+}
+
 func goMain(args []string) int {
 	opts, args, err := parseOptions(args)
+	fmt.Println(args)
 	if err != nil {
 		if err.statusCode != 0 {
 			fmt.Println(err.Error())

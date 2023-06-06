@@ -8,8 +8,8 @@ type Config struct {
 type Mode int
 
 const (
-	day Mode = iota + 1
-	week
+	Day Mode = iota + 1
+	Week
 )
 
 func NewConfig(mode Mode) *Config {
@@ -18,9 +18,9 @@ func NewConfig(mode Mode) *Config {
 
 func (m Mode) String() string {
 	switch m {
-	case day:
+	case Day:
 		return "day"
-	case week:
+	case Week:
 		return "week"
 	default:
 		return "unknown"
@@ -29,9 +29,9 @@ func (m Mode) String() string {
 
 func (m Mode) GetMode() string {
 	switch m {
-	case day:
+	case Day:
 		return "overview_forecast"
-	case week:
+	case Week:
 		return "overview_week"
 	default:
 		return "unknown"
