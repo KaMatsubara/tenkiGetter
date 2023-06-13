@@ -1,3 +1,5 @@
-baseURL = 'http://example.org/'
-languageCode = 'en-us'
-title = 'My New Hugo Site'
+baseURL = 'https://KaMatsubara.github.io/tenkiGetter'
+languageCode = "ja-JP"
+title = "TenkiGetter"
+theme = "doks”
+defaultContentLanguage = "ja"
