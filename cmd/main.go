@@ -93,7 +93,10 @@ func performImpl(args []string, executor func(url string) error) *tenkiGetterErr
 
 func perform(opts *options, args []string) *tenkiGetterError {
 	forecast := tenkiGetter.NewForecast()
-	config := tenkiGetter.NewConfig(opts.mode(args))
+	config := tenkiGetter.NewConfig(opts.mode(args), args[0])
+	if config.OfficeCode == "" {
+		return &tenkiGetterError{statusCode: 0, message: "地域が存在しません"}
+	}
 	switch config.RunMode {
 	case tenkiGetter.Day:
 		return performImpl(args, func(url string) error {

@@ -11,7 +11,7 @@
             "mode": "debug",
             "program": "${workspaceFolder}/cmd/main.go",
             "args":[
-                "-w", "大阪"
+                "-w", "鹿児島県"
             ]
             
         }
