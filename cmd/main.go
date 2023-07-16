@@ -124,6 +124,13 @@ func parseOptions(args []string) (*options, []string, *tenkiGetterError) {
 		fmt.Println(versionString(args))
 		return nil, nil, &tenkiGetterError{statusCode: 0, message: ""}
 	}
+	if value, _ := flags.GetBool("generate-completions"); value {
+		err := GenerateCompletion(flags)
+		if err != nil {
+			return nil, nil, &tenkiGetterError{statusCode: 1, message: err.Error()}
+		}
+		return nil, nil, &tenkiGetterError{statusCode: 0, message: "generate completions"}
+	}
 	return opts, flags.Args(), nil
 }
 
@@ -151,7 +158,6 @@ func goMain(args []string) int {
 	fmt.Println(args)
 	opts, args, err := parseOptions(args)
 	fmt.Println(args)
-	fmt.Println("hoge")
 	if err != nil {
 		if err.statusCode != 0 {
 			fmt.Println(err.Error())
