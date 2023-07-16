@@ -72,12 +72,15 @@ func (opts *options) mode(args []string) tenkiGetter.Mode {
 
 func buildOptions(args []string) (*options, *flag.FlagSet) {
 	opts := newOptions()
+	completions := false
 	flags := flag.NewFlagSet(args[0], flag.ContinueOnError)
 	flags.Usage = func() { fmt.Println(helpMessage(args)) }
 	flags.BoolVarP(&opts.flagSet.dayFlag, "day", "d", false, "短期天気概況の取得")
 	flags.BoolVarP(&opts.flagSet.weekFlag, "week", "w", false, "週間天気概況の取得")
 	flags.BoolVarP(&opts.flagSet.helpFlag, "help", "h", false, "ヘルプを表示")
 	flags.BoolVarP(&opts.flagSet.versionFlag, "version", "v", false, "バージョンを表示")
+	flags.BoolVarP(&completions, "generate-completions", "", false, "generate completions")
+	flags.MarkHidden("generate-completions")
 	return opts, flags
 }
 
@@ -145,8 +148,10 @@ func makeError(err error, status int) *tenkiGetterError {
 }
 
 func goMain(args []string) int {
+	fmt.Println(args)
 	opts, args, err := parseOptions(args)
 	fmt.Println(args)
+	fmt.Println("hoge")
 	if err != nil {
 		if err.statusCode != 0 {
 			fmt.Println(err.Error())
