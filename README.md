@@ -5,6 +5,7 @@
 [![Coverage Status](https://coveralls.io/repos/github/KaMatsubara/tenkiGetter/badge.svg?branch=main)](https://coveralls.io/github/KaMatsubara/tenkiGetter?branch=main)
 [![codebeat badge](https://codebeat.co/badges/4e8d995f-16b5-4bc8-b135-641143c9a467)](https://codebeat.co/projects/github-com-kamatsubara-tenkigetter-main)
 [![Go Report Card](https://goreportcard.com/badge/github.com/KaMatsubara/tenkiGetter)](https://goreportcard.com/report/github.com/KaMatsubara/tenkiGetter)
+[![DOI](https://zenodo.org/badge/628910827.svg)](https://zenodo.org/badge/latestdoi/628910827)
 ## Description
 気象庁から提供されているAPIを利用してCLIから天気情報を取得するアプリケーションです
 
