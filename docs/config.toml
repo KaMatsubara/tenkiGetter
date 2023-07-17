@@ -1,5 +1,0 @@
-baseURL = 'https://kamatsubara.github.io/tenkiGetter/'
-languageCode = "ja-JP"
-title = "TenkiGetter"
-theme = "learn"
-defaultContentLanguage = "ja"
