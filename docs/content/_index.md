@@ -1,6 +1,6 @@
 ---
-title: ""
-date: 2023-07-17T17:25:32+09:00
+title: "TenkiGetter"
+date: 2023-07-17T17:40:34+09:00
 draft: false
 ---
 # tenkiGetter
