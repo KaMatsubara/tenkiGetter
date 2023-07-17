@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+  xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  <url>
+    <loc>https://kamatsubara.github.io/tenkiGetter/</loc>
+    <lastmod>2018-04-08T22:46:47+09:00</lastmod>
+  </url><url>
+    <loc>https://kamatsubara.github.io/tenkiGetter/test/</loc>
+  </url><url>
+    <loc>https://kamatsubara.github.io/tenkiGetter/categories/</loc>
+  </url><url>
+    <loc>https://kamatsubara.github.io/tenkiGetter/tags/</loc>
+  </url>
+</urlset>
