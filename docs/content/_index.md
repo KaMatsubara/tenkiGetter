@@ -1,12 +1,11 @@
 ---
-title: "My First Post"
-date: 2018-04-08T22:46:47+09:00
+title: ""
+date: 2023-07-17T17:25:32+09:00
 draft: false
 ---
-# hello world
 # tenkiGetter
 
-天気情報を取得します.
+天気情報を取得します
 
 [![Coverage Status](https://coveralls.io/repos/github/KaMatsubara/tenkiGetter/badge.svg?branch=main)](https://coveralls.io/github/KaMatsubara/tenkiGetter?branch=main)
 [![codebeat badge](https://codebeat.co/badges/4e8d995f-16b5-4bc8-b135-641143c9a467)](https://codebeat.co/projects/github-com-kamatsubara-tenkigetter-main)
@@ -15,13 +14,19 @@ draft: false
 気象庁から提供されているAPIを利用してCLIから天気情報を取得するアプリケーションです
 
 ## Usage
-引数として都道府県名を与えると天気予報を取得します
-〜県や〜府は省略できません
+hoge
 ```
 tenkiGetter [オプション] <場所>
+
 オプション
 -h --help ヘルプを表示
 -v --version　バージョンを表示
 -d --day　短期天気概況の取得
 -w --week　週間天気概況の取得
 ```
+
+## Installation
+hoge
+
+## About
+hoge
