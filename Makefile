@@ -1,5 +1,5 @@
 PACKAGE_LIST := $(shell go list ./...)
-VERSION := 0.1.0
+VERSION := 1.0.0
 NAME := tenkiGetter
 DIST := $(NAME)-$(VERSION)
 
