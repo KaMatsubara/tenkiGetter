@@ -10,7 +10,8 @@
 気象庁から提供されているAPIを利用してCLIから天気情報を取得するアプリケーションです
 
 ## Usage
-hoge
+引数として都道府県名を与えると天気予報を取得できます
+"都・道・府・県"は省略できません
 ```
 tenkiGetter [オプション] <場所>
 
@@ -22,7 +23,10 @@ tenkiGetter [オプション] <場所>
 ```
 
 ## Installation
-hoge
+```
+brew install KaMatsubara/tap/tenkiGetter 
+```
+
 
 ## About
-hoge
+気象庁のAPIから天気予報を取得しています
