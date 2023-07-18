@@ -23,6 +23,7 @@ tenkiGetter [オプション] <場所>
 ```
 
 ## Installation
+homebrewを利用するか, githubからファイルをダウンロードしてください
 ```
 brew install KaMatsubara/tap/tenkiGetter 
 ```
